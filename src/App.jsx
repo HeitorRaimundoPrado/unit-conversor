@@ -4,7 +4,6 @@ import Sidebar from "./components/Sidebar/Sidebar.jsx"
 import Footer from "./components/Footer/Footer.jsx"
 import DistancePage from "./pages/DistancePage/DistancePage.jsx"
 import VolumePage from "./pages/VolumePage/VolumePage.jsx"
-import CapacityPage from "./pages/CapacityPage/CapacityPage.jsx"
 import CalculatorPage from "./pages/CalculatorPage/CalculatorPage.jsx"
 
 export const CurPageContext = createContext(null);
@@ -14,7 +13,6 @@ export const SidebarContext = createContext(null);
 export const pages = {
     'distance': <DistancePage/>,
     'volume': <VolumePage/>,
-    'capacity': <CapacityPage/>,
     'calc': <CalculatorPage/>
 }
 
