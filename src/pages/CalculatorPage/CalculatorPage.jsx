@@ -1,26 +1,32 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../App";
+import "./CalculatorPage.css"
 
 const CalculatorPage = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [firstNumber, setFirstNumber] = useState(null);
   const [display, setDisplay] = useState('0')
   const [operation, setOperation] = useState(null);
+  const [afterResult, setAfterResult] = useState(false);
 
 
   const handleNumber = (newChar) => {
-    if (display === '0') {
+    if (display === '0' || afterResult) {
       setDisplay(newChar);
     }
 
     else {
       setDisplay(display + newChar);
     }
+
+    setAfterResult(false);
   }
 
   const handleOperation = (op) => {
+    setAfterResult(false);
+    setOperation(op);
+
     if (operation === null) {
-      setOperation(op);
       setFirstNumber(parseInt(display));
       setDisplay('0');
     }
@@ -31,6 +37,8 @@ const CalculatorPage = () => {
   }
 
   const handleGetResult = () => {
+    setAfterResult(true);
+
     const secondNumber = parseInt(display);
     let result = null;
     
@@ -56,7 +64,6 @@ const CalculatorPage = () => {
     }
 
     setFirstNumber(result);
-    setOperation(null);
     setDisplay(String(result));
   }
 
@@ -79,36 +86,36 @@ const CalculatorPage = () => {
       <div className={"display display-" + theme}> {display} </div>
       <div className={"calc-buttons calc-buttons" + theme}>
         <div> 
-          <button onClick={handlePercentage}>%</button>
-          <button onClick={() => handleOperation('expo')}>^</button>
-          <button onClick={handleClear}>C</button>
-          <button onClick={handleBackspace}>backspace</button>
+          <button className={"top-left-border calc-button calc-button-" + theme} onClick={handlePercentage}>%</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleOperation('expo')}>^</button>
+          <button className={"calc-button calc-button-" + theme} onClick={handleClear}>C</button>
+          <button className={"top-right-border calc-button calc-button-" + theme} onClick={handleBackspace}>&#8592;</button>
         </div>
 
         <div> 
-          <button onClick={() => handleNumber('7')}>7</button>
-          <button onClick={() => handleNumber('8')}>8</button>
-          <button onClick={() => handleNumber('9')}>9</button>
-          <button onClick={() => handleOperation("div")}>&#247;</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('7')}>7</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('8')}>8</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('9')}>9</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleOperation("div")}>&#247;</button>
         </div>
 
         <div> 
-          <button onClick={() => handleNumber('4')}>4</button>
-          <button onClick={() => handleNumber('5')}>5</button>
-          <button onClick={() => handleNumber('6')}>6</button>
-          <button onClick={() => handleOperation("mul")}>*</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('4')}>4</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('5')}>5</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('6')}>6</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleOperation("mul")}>*</button>
         </div>
 
         <div> 
-          <button onClick={() => handleNumber('1')}>1</button>
-          <button onClick={() => handleNumber('2')}>2</button>
-          <button onClick={() => handleNumber('3')}>3</button>
-          <button onClick={() => handleOperation('min')}>-</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('1')}>1</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('2')}>2</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleNumber('3')}>3</button>
+          <button className={"calc-button calc-button-" + theme} onClick={() => handleOperation('min')}>-</button>
         </div>
 
         <div>
-          <button onClick={handleGetResult}>=</button>
-          <button onClick={() => handleOperation('plus')}>+</button>
+          <button className={"bottom-left-border large-button calc-button calc-button-" + theme } onClick={handleGetResult}>=</button>
+          <button className={"bottom-right-border large-button calc-button calc-button-" + theme } onClick={() => handleOperation('plus')}>+</button>
         </div>
       </div>
     </div>

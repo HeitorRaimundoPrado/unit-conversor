@@ -1,0 +1,9 @@
+.unit-selector {
+  flex-direction: column;
+  border: 0;
+}
+
+.unit-selector button {
+  border-radius: 0;
+  border: 1px solid #777;
+}

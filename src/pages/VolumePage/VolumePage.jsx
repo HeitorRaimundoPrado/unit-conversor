@@ -12,6 +12,10 @@ const VolumePage = () => {
   const [inputUnit, setInputUnit] = useState('L');
   const [outputUnit, setOutputUnit] = useState('L');
   const [result, setResult] = useState(null);
+  const [inputSelectorX, setInputSelectorX] = useState(0);
+  const [inputSelectorY, setInputSelectorY] = useState(0);
+  const [outputSelectorX, setOutputSelectorX] = useState(0);
+  const [outputSelectorY, setOutputSelectorY] = useState(0);
 
   const conversionTable = {
     'L': 1,
@@ -36,6 +40,8 @@ const VolumePage = () => {
     }
 
     else {
+      setOutputSelectorX(e.clientX)
+      setOutputSelectorY(e.clientY)
       setOutputSelectorVisible(true);
     }
   }
@@ -46,24 +52,34 @@ const VolumePage = () => {
     }
 
     else {
+      setInputSelectorX(e.clientX)
+      setInputSelectorY(e.clientY)
       setInputSelectorVisible(true);
     }
   }
 
   return (
-    <div>
-      <button onClick={handleToggleInputSelectorVisible}>Select Input Unit</button> 
-      <div>{inputUnit}</div>
+    <div className="conversion-page">
+      <div className={"unit-selection input-unit-selection unit-selection-" + theme}>
+        <button className={"button button-" + theme} onClick={handleToggleInputSelectorVisible}>Select Input Unit</button> 
+        <div>{inputUnit}</div>
+      </div>
+
       <UnitSelector conversionTable={conversionTable} visible={inputSelectorVisible} setReturn={setInputUnit}/>
 
-      <input type="text" className={"unit-input unit-input-" + theme} onChange={handleChangeInputNumber}/>
+      <div className={"unit-selection output-unit-selection unit-selection-" + theme}>
+        <button className={"button button-" + theme} onClick={handleToggleOutputSelectorVisible}>Select Output Unit</button>
+        <div>{outputUnit}</div>
+      </div>
 
-      <button onClick={handleToggleOutputSelectorVisible}>Select Output Unit</button>
-      <div>{outputUnit}</div>
+
       <UnitSelector conversionTable={conversionTable} visible={outputSelectorVisible} setReturn={setOutputUnit}/>
 
 
-      <button onClick={handleConvert}>Convert</button>
+      <div className={"last-section"}>
+        <input type="text" className={"unit-input unit-input-" + theme} onChange={handleChangeInputNumber}/>
+        <button className={"convert-button button button-" + theme} onClick={handleConvert}>Convert</button>
+      </div>
 
       <div className={"display-result display-result-" + theme}>{ result && result }</div>
     </div>

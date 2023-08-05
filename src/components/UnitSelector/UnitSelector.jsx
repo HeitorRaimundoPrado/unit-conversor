@@ -1,10 +1,19 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
+import "./UnitSelector.css"
+
 export const UnitSelector = (props) => {
-  const { conversionTable, visible, setReturn } = props;
+  const { conversionTable, visible, setVisible, setReturn, x, y } = props;
+  const {theme, setTheme} = useContext(ThemeContext)
 
   return (
-    <div style={{display: visible ? 'flex' : 'none'}}>
+    <div className={"unit-selector unit-selector-" + theme} style={{display: visible ? 'flex' : 'none', position: 'absolute', top: y, left: x}}>
       {Object.keys(conversionTable).map((unit) => { 
-        return <button onClick={() => setReturn(unit)}>{unit}</button>
+        return <button onClick={() => {
+          setReturn(unit);
+          setVisible(false);
+        }}
+        >{unit}</button>
       })}
     </div>
   )

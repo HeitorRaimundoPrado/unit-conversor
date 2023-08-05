@@ -1,20 +1,11 @@
 import { useContext } from "react";
 import { SidebarContext, ThemeContext } from "../../App";
+import "./Header.css"
 
 const Header = () => {
 
   const {theme, setTheme} = useContext(ThemeContext);
   const {sidebarVisible, setSidebarVisible} = useContext(SidebarContext);
-
-  const handleSwitchTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    }
-    
-    else {
-      setTheme("light");
-    }
-  }
 
   const handleToggleSidebar = () => {
     if (sidebarVisible) {
@@ -27,11 +18,11 @@ const Header = () => {
   }
 
   return (
-    <nav>
-      <button onClick={handleSwitchTheme}> Change Theme</button>
-      <button onClick={handleToggleSidebar}><img src="/bars-solid.svg" alt="menu"/></button>
-
-    </nav>
+    <header>
+      <nav className={"nav nav-" + theme}>
+        <button onClick={handleToggleSidebar}><img width="30px" height="30px" src="/bars-solid.svg" alt="menu"/></button>
+      </nav>
+    </header>
   )
 }
 

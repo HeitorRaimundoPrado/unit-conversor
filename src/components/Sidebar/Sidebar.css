@@ -1,0 +1,35 @@
+.sidebar {
+  position: absolute;
+  height: 100%;
+  width: 150px;
+  border-left: 1px solid #333;
+}
+
+.sidebar-light {
+  background-color: #dadbc3;
+} 
+
+.sidebar-dark {
+  background-color: #333;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-content button {
+  background: transparent;
+  margin-top: 2rem;
+  margin-left: 10px;
+  border: none;
+  text-transform: capitalize;
+}
+
+.sidebar-content-light button {
+  color: #45060c;
+}
+
+.sidebar-content-dark button {
+  color: #eee;
+}
