@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { ThemeContext } from '../../App.jsx'
 import { UnitSelector } from '../../components/UnitSelector/UnitSelector.jsx'
 
@@ -17,6 +17,9 @@ const VolumePage = () => {
   const [outputSelectorX, setOutputSelectorX] = useState(0);
   const [outputSelectorY, setOutputSelectorY] = useState(0);
 
+  const inputRef = useRef(null);
+  const outputRef = useRef(null);
+
   const conversionTable = {
     'L': 1,
     'dm^3': 1,
@@ -34,7 +37,8 @@ const VolumePage = () => {
     setResult(inputNumber / conversionTable[inputUnit] * conversionTable[outputUnit]);
   }
 
-  const handleToggleOutputSelectorVisible = () => {
+  const handleToggleOutputSelectorVisible = (e) => {
+    e.stopPropagation();
     if (outputSelectorVisible) {
       setOutputSelectorVisible(false);
     }
@@ -46,7 +50,8 @@ const VolumePage = () => {
     }
   }
 
-  const handleToggleInputSelectorVisible = () => {
+  const handleToggleInputSelectorVisible = (e) => {
+    e.stopPropagation();
     if (inputSelectorVisible) {
       setInputSelectorVisible(false);
     }
@@ -57,6 +62,34 @@ const VolumePage = () => {
       setInputSelectorVisible(true);
     }
   }
+ 
+  function handleOutputClick(event) {
+    if (inputRef.current && !inputRef.current.contains(event.target)) {
+      setOutputSelectorVisible(false)
+      document.removeEventListener("click", handleOutputClick);
+    }
+  }
+
+  function handleInputClick(event) {
+    if (inputRef.current && !inputRef.current.contains(event.target)) {
+      setInputSelectorVisible(false)
+      document.removeEventListener("click", handleInputClick);
+    }
+  }
+  
+  useEffect(() => {
+    if (inputSelectorVisible) {
+      document.addEventListener("click", handleInputClick);
+    }
+  }, [inputSelectorVisible])
+
+  useEffect(() => {
+    if (outputSelectorVisible) {
+      document.addEventListener("click", handleOutputClick);
+    }
+  }, [outputSelectorVisible])
+
+
 
   return (
     <div className="conversion-page">
@@ -65,7 +98,7 @@ const VolumePage = () => {
         <div>{inputUnit}</div>
       </div>
 
-      <UnitSelector conversionTable={conversionTable} visible={inputSelectorVisible} setReturn={setInputUnit}/>
+      <UnitSelector conversionTable={conversionTable} visible={inputSelectorVisible} setVisible={setInputSelectorVisible} setReturn={setInputUnit} x={inputSelectorX} y={inputSelectorY} extRef={inputRef}/>
 
       <div className={"unit-selection output-unit-selection unit-selection-" + theme}>
         <button className={"button button-" + theme} onClick={handleToggleOutputSelectorVisible}>Select Output Unit</button>
@@ -73,7 +106,7 @@ const VolumePage = () => {
       </div>
 
 
-      <UnitSelector conversionTable={conversionTable} visible={outputSelectorVisible} setReturn={setOutputUnit}/>
+      <UnitSelector conversionTable={conversionTable} visible={outputSelectorVisible} setVisible={setOutputSelectorVisible} setReturn={setOutputUnit} x={outputSelectorX} y={outputSelectorY} extRef={outputRef}/>
 
 
       <div className={"last-section"}>
