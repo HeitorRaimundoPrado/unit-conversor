@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 import Header from "./components/Header/Header.jsx"
 import Sidebar from "./components/Sidebar/Sidebar.jsx"
 import Footer from "./components/Footer/Footer.jsx"
@@ -19,10 +19,25 @@ export const pages = {
 
 function App() {
   const [curPage, setCurPage] = useState('distance');
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(null);
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
-  
+  useEffect(() => {
+    console.log(localStorage.getItem("theme"))
+    if (localStorage.getItem("theme") !== null) {
+      setTheme(localStorage.getItem("theme"))
+    }
+
+    else {
+      setTheme("light");
+    }
+  }, [])
+
+  useEffect(() => {
+    if (theme !== null) {
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme])
 
   return (
     <>

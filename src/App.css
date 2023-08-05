@@ -97,12 +97,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: fit-content;
   flex-direction: column;
 }
 
 .display-result {
-  width: 60%;
+  width: fit-content;
   display: flex;
   justify-content: center;
   font-size: 1.6rem;
