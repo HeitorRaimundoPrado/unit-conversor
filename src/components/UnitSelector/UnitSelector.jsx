@@ -3,7 +3,7 @@ import { ThemeContext } from "../../App";
 import "./UnitSelector.css"
 
 export const UnitSelector = (props) => {
-  const { conversionTable, visible, setVisible, setReturn, x, y, extRef } = props;
+  const { extId, conversionTable, setReturn } = props;
   const {theme, setTheme} = useContext(ThemeContext)
 
   const lookup = {
@@ -11,14 +11,8 @@ export const UnitSelector = (props) => {
     [Object.keys(conversionTable).length-1]: "bottom"
   }
   return (
-    <div className={"unit-selector unit-selector-" + theme} style={{display: visible ? 'flex' : 'none', position: 'absolute', top: y, left: x}} ref={extRef}>
-      {Object.keys(conversionTable).map((unit, idx) => { 
-        return <button key={idx} className={"unit-select-button-" + lookup[idx]} onClick={() => {
-          setReturn(unit);
-          setVisible(false);
-        }}
-        >{unit}</button>
-      })}
-    </div>
+    <select onChange={(e) => setReturn(e.target.value)} id={extId} className={"unit-selector unit-selector-" + theme} >
+      {Object.keys(conversionTable).map((unit, idx) => <option value={unit}>{unit}</option>)}
+    </select>
   )
 }

@@ -29,67 +29,15 @@ const VolumePage = () => {
   }
 
   const handleChangeInputNumber = (e) => {
-    setInputNumber(e.target.value)
+    if (!isNaN(parseInt(e.target.value))) {
+      setInputNumber(parseInt(e.target.value));
+    }
   }
 
 
   const handleConvert = () => {
     setResult(inputNumber / conversionTable[inputUnit] * conversionTable[outputUnit]);
   }
-
-  const handleToggleOutputSelectorVisible = (e) => {
-    e.stopPropagation();
-    if (outputSelectorVisible) {
-      setOutputSelectorVisible(false);
-    }
-
-    else {
-      setOutputSelectorX(e.clientX)
-      setOutputSelectorY(e.clientY)
-      setOutputSelectorVisible(true);
-    }
-  }
-
-  const handleToggleInputSelectorVisible = (e) => {
-    e.stopPropagation();
-    if (inputSelectorVisible) {
-      setInputSelectorVisible(false);
-    }
-
-    else {
-      setInputSelectorX(e.clientX)
-      setInputSelectorY(e.clientY)
-      setInputSelectorVisible(true);
-    }
-  }
- 
-  function handleOutputClick(event) {
-    if (inputRef.current && !inputRef.current.contains(event.target)) {
-      setOutputSelectorVisible(false)
-      document.removeEventListener("click", handleOutputClick);
-    }
-  }
-
-  function handleInputClick(event) {
-    if (inputRef.current && !inputRef.current.contains(event.target)) {
-      setInputSelectorVisible(false)
-      document.removeEventListener("click", handleInputClick);
-    }
-  }
-  
-  useEffect(() => {
-    if (inputSelectorVisible) {
-      document.addEventListener("click", handleInputClick);
-    }
-  }, [inputSelectorVisible])
-
-  useEffect(() => {
-    if (outputSelectorVisible) {
-      document.addEventListener("click", handleOutputClick);
-    }
-  }, [outputSelectorVisible])
-
-
 
   return (
     <div className="conversion-page">
@@ -110,7 +58,7 @@ const VolumePage = () => {
 
 
       <div className={"last-section"}>
-        <input type="text" className={"unit-input unit-input-" + theme} onChange={handleChangeInputNumber}/>
+        <input type="number" className={"unit-input unit-input-" + theme} value={inputNumber} onChange={handleChangeInputNumber}/>
         <button className={"convert-button button button-" + theme} onClick={handleConvert}>Convert</button>
       </div>
 

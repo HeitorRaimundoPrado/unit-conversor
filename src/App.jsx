@@ -6,6 +6,7 @@ import DistancePage from "./pages/DistancePage/DistancePage.jsx"
 import VolumePage from "./pages/VolumePage/VolumePage.jsx"
 import CalculatorPage from "./pages/CalculatorPage/CalculatorPage.jsx"
 import './App.css'
+import './ConversionPages.css'
 
 export const CurPageContext = createContext(null);
 export const ThemeContext = createContext(null);
