@@ -25,8 +25,26 @@
 .footer a {
   text-decoration: none;
   font-size: 20px;
+  display: flex;
+  text-align: center;
 }
 
 .footer-light a{
   color: #fff;
+}
+
+@media only screen and (max-width: 350px) {
+  .footer a {
+    font-size: 17px;
+  }
+
+  .middle-link {
+    padding-inline: 5px;
+  }
+}
+
+@media only screen and (max-width: 230px) {
+  .footer a {
+    font-size: 10px;
+  }
 }

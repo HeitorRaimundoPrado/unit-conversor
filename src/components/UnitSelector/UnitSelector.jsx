@@ -13,7 +13,7 @@ export const UnitSelector = (props) => {
   return (
     <div className={"unit-selector unit-selector-" + theme} style={{display: visible ? 'flex' : 'none', position: 'absolute', top: y, left: x}} ref={extRef}>
       {Object.keys(conversionTable).map((unit, idx) => { 
-        return <button className={"unit-select-button-" + lookup[idx]} onClick={() => {
+        return <button key={idx} className={"unit-select-button-" + lookup[idx]} onClick={() => {
           setReturn(unit);
           setVisible(false);
         }}

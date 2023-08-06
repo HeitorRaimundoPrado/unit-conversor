@@ -38,7 +38,13 @@ body {
 }
 
 .conversion-page {
-  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80%;
+  margin-bottom: 20%;
 }
 
 .unit-selection-dark div{
@@ -112,3 +118,4 @@ body {
 .display-result-dark {
   color: #ccc;
 }
+
