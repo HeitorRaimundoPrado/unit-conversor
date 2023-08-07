@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: max(100%, fit-content);
 }
 
 .app-light {
@@ -49,4 +49,8 @@ body {
 .unit-input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.tab {
+  margin-left: 15px;
 }

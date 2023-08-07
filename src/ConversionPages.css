@@ -16,8 +16,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 80%;
+  width: 100%;
+  height: max(80%, fit-content);
   margin-bottom: 20%;
 }
 
@@ -99,6 +99,33 @@
   margin-bottom: 1rem;
   padding: 10px;
   border-radius: 15px;
+}
+
+.article {
+  width: calc(100vw - 8rem);
+  margin: 2rem;
+}
+
+.article h1 {
+  margin: 1rem;
+  width: fit-content;
+}
+
+.article h2 {
+  margin: 1rem;
+  width: fit-content;
+}
+
+.article h3 {
+  margin: 0.8rem;
+}
+
+.article p {
+  tab-size: 2;
+}
+
+.article-dark  {
+  color: #ccc;
 }
 
 @media only screen and (max-width: 450px) {
