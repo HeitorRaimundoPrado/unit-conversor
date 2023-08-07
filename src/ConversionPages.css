@@ -1,3 +1,6 @@
+* {
+  font-family: Arial;
+}
 :root {
   --select-border: #777;
   --select-focus: blue;
@@ -32,8 +35,9 @@
   width: fit-content;
   justify-content: space-between;
   align-items: center;
-  width: 180px;
+  width: 400px;
   margin-bottom: 20px;
+  font-size: 2rem;
 }
 
 .button {
@@ -55,16 +59,23 @@
 }
 
 .convert-button {
-  width: 180px;
+  width: 100%;
   margin: 0;
+  height: fit-content;
   margin-top: 5px;
+  border-radius: 30px;
+  font-size: 2rem;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .last-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
+  width: 400px;
   flex-direction: column;
 }
 
@@ -80,3 +91,42 @@
   color: #ccc;
 }
 
+.unit-input {
+  outline: none;
+  width: calc(100% - 20px);
+  box-shadow: none;
+  border: 1px solid #333;
+  margin-bottom: 1rem;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+@media only screen and (max-width: 450px) {
+  .unit-selection {
+    width: 200px;
+    font-size: 1rem;
+  }
+
+  .unit-selector {
+    font-size: 1rem;
+  }
+
+  .last-section {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 250px) {
+  .unit-selection {
+    font-size: 0.7rem;
+    width: 150px;
+  }
+
+  .unit-selector {
+    font-size: 0.7rem;
+  }
+
+  .last-section {
+    width: 150px;
+  }
+}
