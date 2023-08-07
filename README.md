@@ -16,12 +16,12 @@ To start using the Simple Unit Converter with Vite, follow these steps:
 
 1. **Clone the Repository:** Clone this repository to your local machine using Git.
     ```bash
-    git clone https://github.com/your-username/simple-unit-converter-vite.git
+    git clone https://github.com/HeitorRaimundoPrado/unit-conversor.git
     ```
 
 2. **Navigate to the Project Directory:** Move into the project directory.
     ```bash
-    cd simple-unit-converter-vite
+    cd unit-conversor
     ```
 
 3. **Install Dependencies:** Install project dependencies using npm or yarn.
@@ -42,7 +42,7 @@ We encourage contributions from the community to make the Simple Unit Converter 
 
 2. **Clone Your Fork:** Clone your forked repository to your local machine.
     ```bash
-    git clone https://github.com/your-username/simple-unit-converter-vite.git
+    git clone https://github.com/HeitorRaimundoPrado/unit-conversor.git
     ```
 
 3. **Create a New Branch:** Create a new branch to work on your contribution.
@@ -75,8 +75,7 @@ Stay tuned for updates and keep an eye on the repository for new features!
 
 For questions, feedback, or collaboration, feel free to get in touch with the project maintainers:
 
-- Your Name: your.email@example.com
-- Another Maintainer: another.email@example.com
+heitorrdpp@gmail.com
 
 Let's make unit conversion simpler and more convenient together!
 
