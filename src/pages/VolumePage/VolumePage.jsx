@@ -38,6 +38,18 @@ const VolumePage = () => {
   const handleConvert = () => {
     setResult(inputNumber / conversionTable[inputUnit] * conversionTable[outputUnit]);
   }
+  
+  const handleInputSearchChange = (e) => {
+    let conversionKeys = Object.keys(conversionTable);
+    setInputSearchArray(conversionKeys.filter((unit) => unit.match(e.target.value) && e.target.value !== ""));
+  }
+
+  const handleOutputSearchChange = (e) => {
+    let conversionKeys = Object.keys(conversionTable);
+    setOutputSearchArray(conversionKeys.filter((unit) => unit.match(e.target.value) && e.target.value !== ""));
+  }
+
+
 
   return (
     <div className="conversion-page">
@@ -59,6 +71,32 @@ const VolumePage = () => {
       </div>
 
       <div className={"display-result display-result-" + theme}>{ result && result }</div>
+
+      <div className="search-areas">
+        <div className={"search-unit search-unit-" + theme}>
+          <label htmlFor="search-unit">Search for input unit</label>
+          <div className="dropdown">
+            <input onChange={handleInputSearchChange} id="search-unit" type="text"/>
+            <div className={"dropdown-list dropdown-list-" + theme} ref={inputDropdownRef}>
+             {inputSearchArray.map((unit, idx) => {
+                return <button onClick={() => setInputUnit(unit)} key={idx} className={"dropdown-button" + (idx === 0 ? "-top" : "") + (idx === inputSearchArray.length - 1 ? "-bottom" : "")}>{unit}</button>
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className={"search-unit search-unit-" + theme}>
+          <label htmlFor="search-unit">Search for output unit</label>
+          <div className="dropdown">
+            <input onChange={handleOutputSearchChange} type="text" id="search-unit"/>
+            <div className={"dropdown-list dropdown-list-" + theme} ref={outputDropdownRef}>
+              {outputSearchArray.map((unit, idx) => {
+                return <button onClick={() => setInputUnit(unit)} key={idx} className={"dropdown-button" + (idx === 0 ? "-top" : "") + (idx === outputSearchArray.length - 1 ? "-bottom" : "")}>{unit}</button>
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
 
       <article className={"article article-" + theme}>
         <h1>Exploring Volume: Unraveling the Essence of Space Occupancy</h1>
