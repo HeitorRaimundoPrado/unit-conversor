@@ -17,8 +17,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: max(80%, fit-content);
-  margin-bottom: 20%;
+  min-height: 80%;
+  height: fit-content;
+  margin-bottom: 5rem;
 }
 
 .conversion-area {
@@ -109,7 +110,9 @@
 
 .article {
   width: calc(100vw - 8rem);
-  margin: 2rem;
+  margin: 3rem;
+  margin-bottom: 6rem;
+  text-align: justify;
 }
 
 .article h1 {
