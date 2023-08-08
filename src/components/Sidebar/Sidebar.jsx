@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { SidebarContext, ThemeContext, pages } from "../../App";
+import { Link } from "react-router-dom";
 
 import './Sidebar.css'
 
@@ -22,7 +23,7 @@ const Sidebar = () => {
       <div className={"sidebar-content sidebar-content-" + theme}>
         <button onClick={() => setSidebarVisible(false)}>Close</button>
         {pages.map((page) => {
-          return <button key={page}><a href={"/" + page}>{page}</a></button>
+          return <button onClick={() => setSidebarVisible(false)} key={page}><Link to={"/" + page}>{page}</Link></button>
         })}
         <button onClick={handleSwitchTheme}> Change Theme</button>
       </div>

@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer.jsx"
 import DistancePage from "./pages/DistancePage/DistancePage.jsx"
 import VolumePage from "./pages/VolumePage/VolumePage.jsx"
 import CalculatorPage from "./pages/CalculatorPage/CalculatorPage.jsx"
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 import './ConversionPages.css'
 
@@ -49,6 +49,7 @@ function App() {
             <Header/>
             <div className="content">
               <BrowserRouter>
+                <Sidebar/>
                 <Routes>
                   <Route path="/distance" element={<DistancePage/>}/>
                   <Route path="/volume" element={<VolumePage/>}/>
@@ -56,7 +57,6 @@ function App() {
                 </Routes>
               </BrowserRouter>
             </div>
-            <Sidebar/>
             <Footer/>
           </div>
         </SidebarContext.Provider>
