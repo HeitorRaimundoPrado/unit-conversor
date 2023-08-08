@@ -232,6 +232,12 @@
   .convert-button {
     height: 50px;
   }
+  
+  .article {
+    font-size: 0.8rem;
+    width: calc(100% - 1.1rem);
+    margin-inline: 0.5rem;
+  }
 
   .search-unit {
     width: 200px;
@@ -255,6 +261,10 @@
 
   .last-section {
     width: 150px;
+  }
+
+  .article {
+    font-size: 0.6rem;
   }
 
   .convert-button {
