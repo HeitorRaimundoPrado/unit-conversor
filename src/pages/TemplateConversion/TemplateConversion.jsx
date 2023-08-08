@@ -22,6 +22,10 @@ const TemplateConversion = (props) => {
     if (!isNaN(parseInt(e.target.value))) {
       setInputNumber(parseInt(e.target.value))
     }
+
+    else if (e.target.value === "") {
+      setInputNumber("");
+    }
   }
 
   const handleConvert = () => {
