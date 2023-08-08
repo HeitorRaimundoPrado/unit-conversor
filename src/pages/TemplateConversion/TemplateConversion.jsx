@@ -29,6 +29,11 @@ const TemplateConversion = (props) => {
   }
 
   const handleConvert = () => {
+    if (isNaN(parseInt(inputNumber))) {
+      alert("Invalid Input");
+      return;
+    }
+
     setResult(inputNumber / conversionTable[inputUnit] * conversionTable[outputUnit]);
   }
 
