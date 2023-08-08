@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { CurPageContext, SidebarContext, ThemeContext, pages } from "../../App";
+import { SidebarContext, ThemeContext, pages } from "../../App";
+
 import './Sidebar.css'
 
 const Sidebar = () => {
   const {sidebarVisible, setSidebarVisible} = useContext(SidebarContext);
   const {theme, setTheme} = useContext(ThemeContext)
-  const {curPage, setCurPage} = useContext(CurPageContext)
 
   const handleSwitchTheme = () => {
     if (theme === "light") {
@@ -21,8 +21,8 @@ const Sidebar = () => {
     <div className={"sidebar sidebar-" + theme} style={{display: sidebarVisible ? "flex" : "none"}}>
       <div className={"sidebar-content sidebar-content-" + theme}>
         <button onClick={() => setSidebarVisible(false)}>Close</button>
-        {Object.keys(pages).map((page) => {
-          return <button key={page} onClick={() => setCurPage(page)}>{page}</button>
+        {pages.map((page) => {
+          return <button key={page}><a href={"/" + page}>{page}</a></button>
         })}
         <button onClick={handleSwitchTheme}> Change Theme</button>
       </div>

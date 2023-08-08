@@ -16,14 +16,19 @@
 .sidebar-content {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
 .sidebar-content button {
   background: transparent;
   margin-top: 2rem;
-  margin-left: 10px;
   border: none;
   text-transform: capitalize;
+}
+
+.sidebar-content a {
+  text-decoration: none;
 }
 
 .sidebar-content-light button {
@@ -31,5 +36,13 @@
 }
 
 .sidebar-content-dark button {
+  color: #eee;
+}
+
+.sidebar-content-light a {
+  color: #45060c;
+}
+
+.sidebar-content-dark a {
   color: #eee;
 }

@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer.jsx"
 import DistancePage from "./pages/DistancePage/DistancePage.jsx"
 import VolumePage from "./pages/VolumePage/VolumePage.jsx"
 import CalculatorPage from "./pages/CalculatorPage/CalculatorPage.jsx"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import './ConversionPages.css'
 
@@ -12,14 +13,14 @@ export const CurPageContext = createContext(null);
 export const ThemeContext = createContext(null);
 export const SidebarContext = createContext(null);
 
-export const pages = {
-    'distance': <DistancePage/>,
-    'volume': <VolumePage/>,
-    'calculator': <CalculatorPage/>
-}
+export const pages = [
+  "distance",
+  "volume",
+  "calculator"
+]
+
 
 function App() {
-  const [curPage, setCurPage] = useState('distance');
   const [theme, setTheme] = useState(null);
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
@@ -43,18 +44,22 @@ function App() {
   return (
     <>
       <ThemeContext.Provider value={{theme, setTheme}}>
-        <CurPageContext.Provider value={{curPage, setCurPage}}>
-          <SidebarContext.Provider value={{sidebarVisible, setSidebarVisible}}>
-            <div className={"app app-" + theme}>
-              <Header/>
-              <div className="content">
-                {pages[curPage]}
-              </div>
-              <Sidebar/>
-              <Footer/>
+        <SidebarContext.Provider value={{sidebarVisible, setSidebarVisible}}>
+          <div className={"app app-" + theme}>
+            <Header/>
+            <div className="content">
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/distance" element={<DistancePage/>}/>
+                  <Route path="/volume" element={<VolumePage/>}/>
+                  <Route path="/calculator" element={<CalculatorPage/>}/>
+                </Routes>
+              </BrowserRouter>
             </div>
-          </SidebarContext.Provider>
-        </CurPageContext.Provider>
+            <Sidebar/>
+            <Footer/>
+          </div>
+        </SidebarContext.Provider>
       </ThemeContext.Provider> 
     </>
   )
