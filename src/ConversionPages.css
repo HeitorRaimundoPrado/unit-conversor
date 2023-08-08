@@ -56,8 +56,9 @@
 }
 
 .button-light {
-  background-color: #ccc;
+  background-color: #9da391;
   color: #333;
+  border: 1px solid #333;
 }
 
 .button-dark {
@@ -76,6 +77,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.5s;
+}
+
+.convert-button:hover {
+  opacity: 0.8;
+}
+
+.convert-button:active {
+  opacity: 0.6;
 }
 
 .last-section {
@@ -148,6 +159,7 @@
   width: 400px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .search-unit-dark label {
@@ -174,6 +186,7 @@
   width: 112px;
   box-shadow: none;
   border: 1px solid #333;
+  padding: 2px;
 }
 
 .dropdown-button-top {
@@ -197,6 +210,11 @@
   color: #ccc;
 }
 
+.dropdown-list-light button {
+  background-color: #ddd;
+  color: #333;
+}
+
 @media only screen and (max-width: 450px) {
   .unit-selection {
     width: 200px;
@@ -209,6 +227,19 @@
 
   .last-section {
     width: 200px;
+  }
+
+  .convert-button {
+    height: 50px;
+  }
+
+  .search-unit {
+    width: 200px;
+    font-size: 0.7rem;
+  }
+
+  .search-unit input {
+    width: 80px;
   }
 }
 
@@ -225,4 +256,18 @@
   .last-section {
     width: 150px;
   }
+
+  .convert-button {
+    height: 30px;
+    font-size: 1rem;
+  }
+  .search-unit {
+    width: 150px;
+    font-size: 0.5rem;
+  }
+
+  .search-unit input {
+    width: 65px;
+  }
 }
+

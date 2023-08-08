@@ -72,7 +72,7 @@ const TemplateConversion = (props) => {
 
       <div className="search-areas">
         <div className={"search-unit search-unit-" + theme}>
-          <label htmlFor="search-unit">Search for input unit</label>
+          <label htmlFor="search-unit">Search input unit</label>
           <div className="dropdown">
             <input onChange={handleInputSearchChange} id="search-unit" type="text"/>
             <div className={"dropdown-list dropdown-list-" + theme} ref={inputDropdownRef}>
@@ -84,7 +84,7 @@ const TemplateConversion = (props) => {
         </div>
 
         <div className={"search-unit search-unit-" + theme}>
-          <label htmlFor="search-unit">Search for output unit</label>
+          <label htmlFor="search-unit">Search output unit</label>
           <div className="dropdown">
             <input onChange={handleOutputSearchChange} type="text" id="search-unit"/>
             <div className={"dropdown-list dropdown-list-" + theme} ref={outputDropdownRef}>

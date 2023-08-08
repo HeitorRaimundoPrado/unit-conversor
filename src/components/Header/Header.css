@@ -1,7 +1,10 @@
 .nav {
   padding-left: 30px;
   padding-top: 15px;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
+  position: fixed;
+  width: 100vw;
+  background-color: #b6bdaa;
 }
 
 .nav button {

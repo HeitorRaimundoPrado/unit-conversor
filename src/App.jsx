@@ -47,8 +47,10 @@ function App() {
           <SidebarContext.Provider value={{sidebarVisible, setSidebarVisible}}>
             <div className={"app app-" + theme}>
               <Header/>
+              <div className="content">
+                {pages[curPage]}
+              </div>
               <Sidebar/>
-              {pages[curPage]}
               <Footer/>
             </div>
           </SidebarContext.Provider>
